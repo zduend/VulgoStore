@@ -43,7 +43,21 @@ function enviarPedido() {
 
   const fotoCamisa = new URL(produtoSelecionado.imagem, window.location.href).href;
 
-  const textoPedido = `🛒 NOVO PEDIDO - VulgoStore\n\n👕 Camisa: ${produtoSelecionado.nome}\n🏷️ Código: ${produtoSelecionado.codigo}\n💰 Preço: ${preco}\n\n📏 Tamanho: ${tamanho}\n✍️ Nome: ${nomeCamisa}\n🔢 Número: ${numeroCamisa}\n📦 Quantidade: ${quantidade}\n\n🖼️ Foto da camisa:\n${fotoCamisa}\n\n👤 Cliente: ${cliente}`;
+const textoPedido = `*VULGOSTORE - NOVO PEDIDO*
+
+Camisa: ${produtoSelecionado.nome}
+Código: ${produtoSelecionado.codigo}
+Preço: ${preco}
+
+Tamanho: ${tamanho}
+Nome: ${nomeCamisa}
+Número: ${numeroCamisa}
+Quantidade: ${quantidade}
+
+Foto da camisa:
+${fotoCamisa}
+
+Cliente: ${cliente}`;
 
   const mensagem = encodeURIComponent(textoPedido);
   window.open(`https://wa.me/${whatsapp}?text=${mensagem}`, '_blank');
