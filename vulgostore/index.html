@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VulgoStore | Camisas de Time</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <h1>VulgoStore</h1>
+      <p>Camisas de time com pedido direto pelo WhatsApp</p>
+    </div>
+    <a class="whats" href="https://wa.me/5561982065232" target="_blank">WhatsApp</a>
+  </header>
+
+  <section class="hero">
+    <h2>Escolha sua camisa</h2>
+    <p>Personalize com nome, número e tamanho. O pedido chega pronto no nosso WhatsApp.</p>
+  </section>
+
+  <main class="catalogo" id="catalogo"></main>
+
+  <section class="futuro">
+    <h2>Em breve</h2>
+    <p>Camisas NBA e NFL estarão disponíveis futuramente.</p>
+  </section>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="fechar" onclick="fecharModal()">×</button>
+      <img id="produtoImagem" src="" alt="Camisa selecionada" />
+      <h2 id="produtoNome"></h2>
+      <p class="preco">R$ 140,00</p>
+
+      <label>Tamanho</label>
+      <select id="tamanho">
+        <option>P</option><option>M</option><option>G</option><option>GG</option><option>G1</option><option>G2</option>
+      </select>
+
+      <label>Nome na camisa</label>
+      <input id="nomeCamisa" placeholder="Ex: MESSI" />
+
+      <label>Número</label>
+      <input id="numeroCamisa" placeholder="Ex: 10" />
+
+      <label>Quantidade</label>
+      <input id="quantidade" type="number" value="1" min="1" />
+
+      <label>Nome do cliente</label>
+      <input id="cliente" placeholder="Seu nome" />
+
+      <button class="pedido" onclick="enviarPedido()">Enviar pedido no WhatsApp</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
