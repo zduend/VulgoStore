@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Painel VulgoStore</title>
+
+<link rel="stylesheet" href="admin.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Painel VulgoStore</h1>
+
+<h2>Novo Produto</h2>
+
+<input id="codigo" placeholder="Código">
+<input id="nome" placeholder="Nome da camisa">
+<input id="preco" type="number" placeholder="Preço">
+
+<select id="categoria">
+    <option>Futebol</option>
+    <option>NBA</option>
+    <option>NFL</option>
+</select>
+
+<input id="imagem" type="file" accept="image/*">
+
+<button onclick="salvarProduto()">
+Cadastrar Produto
+</button>
+
+<hr>
+
+<h2>Produtos cadastrados</h2>
+
+<div id="lista"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin.js"></script>
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>
