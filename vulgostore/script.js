@@ -7,7 +7,7 @@ const produtos = [
   { codigo: 'BRA002', nome: 'Brasil Black Edition 2026', imagem: 'img/brasil-preta.png' },
   { codigo: 'FLA001', nome: 'Flamengo Home Rubro-Negra', imagem: 'img/flamengo.png' }
   { codigo: 'SAN001', nome: 'Santos Home 2026', imagem: 'img/santos26_27.png' }
-
+  { codigo: 'COR001', nome: 'Corinthians home 2026', imagem: 'img/corithians.png' }
 ];
 
 const catalogo = document.getElementById('catalogo');
