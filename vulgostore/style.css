@@ -196,3 +196,58 @@ input, select { width: 100%; padding: 13px; border-radius: 10px; border: 1px sol
     width: 150px;
   }
 }
+
+
+.logo img{
+    width:180px;
+    height:auto;
+    display:block;
+}
+
+.topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+}
+
+.logo-banner{
+    width:220px;
+    display:block;
+    margin:0 auto 25px;
+    filter:drop-shadow(0 0 18px rgba(0,255,120,.35));
+    animation:flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+    100%{transform:translateY(0);}
+}
+
+
+
+
+.botoes-banner{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.botao-whats-banner{
+    display:inline-block;
+    border:2px solid #35e05f;
+    color:#35e05f;
+    padding:16px 32px;
+    border-radius:14px;
+    font-weight:900;
+    text-decoration:none;
+    text-transform:uppercase;
+    transition:.2s;
+}
+
+.botao-whats-banner:hover{
+    background:#35e05f;
+    color:#000;
+}
