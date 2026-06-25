@@ -3,6 +3,14 @@ const SUPABASE_KEY = "sb_publishable_WXyiN55g6IFnJszmTLZo4A_B7dPSnCE";
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+function limparNomeArquivo(nome) {
+    return nome
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z0-9.-]/g, "-")
+        .toLowerCase();
+}
+
 async function salvarProduto() {
     const codigo = document.getElementById("codigo").value;
     const nome = document.getElementById("nome").value;
@@ -15,7 +23,8 @@ async function salvarProduto() {
         return;
     }
 
-    const nomeArquivo = `${Date.now()}-${arquivo.name}`;
+    const nomeLimpo = limparNomeArquivo(arquivo.name);
+    const nomeArquivo = `${Date.now()}-${nomeLimpo}`;
 
     const { error: uploadError } = await supabaseClient.storage
         .from("Camisas")
@@ -36,11 +45,11 @@ async function salvarProduto() {
         .from("produtos")
         .insert([
             {
-                codigo: codigo,
-                nome: nome,
-                preco: preco,
-                categoria: categoria,
-                imagem_url: imagem_url,
+                codigo,
+                nome,
+                preco,
+                categoria,
+                imagem_url,
                 ativo: true
             }
         ]);
