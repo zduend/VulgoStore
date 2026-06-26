@@ -42,6 +42,7 @@ async function carregarProdutosLoja() {
 }
 
 function abrirModal(index) {
+  alterarPersonalizacao();
   produtoSelecionado = produtos[index];
   document.getElementById("produtoPreco").innerText = `R$ ${produtoSelecionado.preco}`;
 
@@ -64,28 +65,25 @@ function alterarPersonalizacao(){
     ).value;
 
     const dados = document.getElementById("dadosPersonalizacao");
-
     const preco = document.getElementById("produtoPreco");
+    const botaoPedido = document.querySelector(".pedido");
 
     if(opcao === "sim"){
 
         dados.style.display = "block";
-
-        preco.innerHTML =
-            "<strong>Total: R$ 175,00</strong>";
+        preco.innerHTML = "<strong>Total: R$ 175,00</strong>";
+        botaoPedido.innerText = "Comprar por R$ 175,00";
 
     }else{
 
         dados.style.display = "none";
-
-        preco.innerHTML =
-            "<strong>Total: R$ 140,00</strong>";
+        preco.innerHTML = "<strong>Total: R$ 140,00</strong>";
+        botaoPedido.innerText = "Comprar por R$ 140,00";
 
         document.getElementById("nomeCamisa").value = "";
         document.getElementById("numeroCamisa").value = "";
 
     }
-
 }
 
 function enviarPedido() {
