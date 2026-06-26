@@ -65,7 +65,12 @@ function enviarPedido() {
   const cliente = document.getElementById('cliente').value || 'Não informado';
 
   const fotoCamisa = produtoSelecionado.imagem_url;
-  const preco = `R$ ${produtoSelecionado.preco}`;
+  const temPersonalizacao =
+  nomeCamisa !== 'Sem personalização' || numeroCamisa !== 'Sem número';
+
+const precoFinal = temPersonalizacao ? 180 : 140;
+
+const preco = `R$ ${precoFinal},00`;
 
   const textoPedido = `*VULGOSTORE - NOVO PEDIDO*
 
