@@ -5,6 +5,9 @@ const SUPABASE_KEY = "sb_publishable_WXyiN55g6IFnJszmTLZo4A_B7dPSnCE";
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+const ADICIONAL_PERSONALIZACAO = 35;
+
+
 let produtoSelecionado = null;
 let produtos = [];
 
@@ -42,53 +45,50 @@ async function carregarProdutosLoja() {
 }
 
 function abrirModal(index) {
-  alterarPersonalizacao();
   produtoSelecionado = produtos[index];
-  document.getElementById("produtoPreco").innerText = `R$ ${produtoSelecionado.preco}`;
 
   document.getElementById('produtoNome').innerText =
     `${produtoSelecionado.nome} - ${produtoSelecionado.codigo}`;
 
   document.getElementById('produtoImagem').src = produtoSelecionado.imagem_url;
 
+  document.querySelector('input[name="personalizacao"][value="nao"]').checked = true;
+
   document.getElementById('modal').style.display = 'flex';
+
+  alterarPersonalizacao();
+}
+
+function alterarPersonalizacao() {
+    const opcao = document.querySelector('input[name="personalizacao"]:checked').value;
+
+    const dados = document.getElementById("dadosPersonalizacao");
+    const preco = document.getElementById("produtoPreco");
+    const botaoPedido = document.querySelector(".pedido");
+
+    const precoBase = Number(produtoSelecionado.preco);
+    const precoFinal = opcao === "sim"
+        ? precoBase + ADICIONAL_PERSONALIZACAO
+        : precoBase;
+
+    if (opcao === "sim") {
+        dados.style.display = "block";
+    } else {
+        dados.style.display = "none";
+        document.getElementById("nomeCamisa").value = "";
+        document.getElementById("numeroCamisa").value = "";
+    }
+
+    preco.innerHTML = `<strong>Total: R$ ${precoFinal.toFixed(2).replace(".", ",")}</strong>`;
+    botaoPedido.innerText = `Comprar por R$ ${precoFinal.toFixed(2).replace(".", ",")}`;
 }
 
 function fecharModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
-function alterarPersonalizacao(){
-
-    const opcao = document.querySelector(
-        'input[name="personalizacao"]:checked'
-    ).value;
-
-    const dados = document.getElementById("dadosPersonalizacao");
-    const preco = document.getElementById("produtoPreco");
-    const botaoPedido = document.querySelector(".pedido");
-
-    if(opcao === "sim"){
-
-        dados.style.display = "block";
-        preco.innerHTML = "<strong>Total: R$ 175,00</strong>";
-        botaoPedido.innerText = "Comprar por R$ 175,00";
-
-    }else{
-
-        dados.style.display = "none";
-        preco.innerHTML = "<strong>Total: R$ 140,00</strong>";
-        botaoPedido.innerText = "Comprar por R$ 140,00";
-
-        document.getElementById("nomeCamisa").value = "";
-        document.getElementById("numeroCamisa").value = "";
-
-    }
-}
-
 function enviarPedido() {
-  const personalizacao =
-document.querySelector(
+  const personalizacao =document.querySelector(
 'input[name="personalizacao"]:checked'
 ).value; 
   const tamanho = document.getElementById('tamanho').value;
@@ -98,12 +98,14 @@ document.querySelector(
   const cliente = document.getElementById('cliente').value || 'Não informado';
 
   const fotoCamisa = produtoSelecionado.imagem_url;
-  const precoFinal =
-personalizacao === "sim" ? 175 : 140;
+  const precoBase = Number(produtoSelecionado.preco);
 
-const preco = `R$ ${precoFinal},00`;
+const precoFinal =
+  personalizacao === "sim" ? precoBase + ADICIONAL_PERSONALIZACAO : precoBase;
 
-  const textoPedido = `*VULGOSTORE - NOVO PEDIDO*
+const preco = `R$ ${precoFinal.toFixed(2).replace(".", ",")}`;
+
+const textoPedido = `*VULGOSTORE - NOVO PEDIDO*
 
 Camisa: ${produtoSelecionado.nome}
 Código: ${produtoSelecionado.codigo}
