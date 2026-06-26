@@ -3,6 +3,17 @@ const SUPABASE_KEY = "sb_publishable_WXyiN55g6IFnJszmTLZo4A_B7dPSnCE";
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+async function verificarLogin() {
+  const { data } = await supabaseClient.auth.getSession();
+
+  if (!data.session) {
+    window.location.href = "login.html";
+    return;
+  }
+}
+
+verificarLogin();
+
 function limparNomeArquivo(nome) {
     return nome
         .normalize("NFD")
