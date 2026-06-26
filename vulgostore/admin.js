@@ -98,3 +98,10 @@ async function carregarProdutos() {
 }
 
 carregarProdutos();
+
+
+async function sair() {
+  await supabaseClient.auth.signOut();
+  window.location.href = "login.html";
+}
+
