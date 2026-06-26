@@ -55,7 +55,7 @@
 
   <section class="futuro">
     <h2>Em breve</h2>
-    <p>Camisas NBA e NFL estarão disponíveis futuramente.</p>
+    <p>Camisas NBA e NFL disponíveis futuramente.</p>
   </section>
 
   <div class="modal" id="modal">
@@ -63,18 +63,60 @@
       <button class="fechar" onclick="fecharModal()">×</button>
       <img id="produtoImagem" src="" alt="Camisa selecionada" />
       <h2 id="produtoNome"></h2>
-      <p class="preco" id="produtoPreco">Sem personalização: R$ 140 | Com nome e número: R$ 180</p>
+      <p class="preco">
+    A partir de <strong>R$ 140,00</strong>
+</p>
+
+<p class="info-personalizacao">
+    ✍️ Personalização (nome + número): <strong>+ R$ 35,00</strong><br>
+    💰 Total com personalização: <strong>R$ 175,00</strong>
+</p>
 
       <label>Tamanho</label>
       <select id="tamanho">
         <option>P</option><option>M</option><option>G</option><option>GG</option><option>G1</option><option>G2</option>
       </select>
 
-      <label>Nome na camisa</label>
-      <input id="nomeCamisa" placeholder="Ex: MESSI" />
+      <label>Personalização</label>
 
-      <label>Número</label>
-      <input id="numeroCamisa" placeholder="Ex: 10" />
+<div class="opcoes-personalizacao">
+
+<label class="radio-personalizacao">
+    <input type="radio"
+           name="personalizacao"
+           value="nao"
+           checked
+           onchange="alterarPersonalizacao()">
+
+    Sem personalização
+    <strong>R$ 140,00</strong>
+</label>
+
+<label class="radio-personalizacao">
+    <input type="radio"
+           name="personalizacao"
+           value="sim"
+           onchange="alterarPersonalizacao()">
+
+    Nome + Número
+    <strong>R$ 175,00</strong>
+</label>
+
+</div>
+
+<p class="preco" id="produtoPreco">
+    Total: <strong>R$ 140,00</strong>
+</p>
+
+<div id="dadosPersonalizacao" style="display:none;">
+
+<label>Nome na camisa</label>
+<input id="nomeCamisa" placeholder="Ex: MESSI">
+
+<label>Número</label>
+<input id="numeroCamisa" placeholder="Ex: 10">
+
+</div>
 
       <label>Quantidade</label>
       <input id="quantidade" type="number" value="1" min="1" />

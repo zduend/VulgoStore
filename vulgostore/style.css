@@ -251,3 +251,68 @@ input, select { width: 100%; padding: 13px; border-radius: 10px; border: 1px sol
     background:#35e05f;
     color:#000;
 }
+
+.info-personalizacao{
+    margin-top:12px;
+    padding:12px;
+    border:1px solid #35e05f;
+    border-radius:10px;
+    background:#111;
+    color:#fff;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.opcoes-personalizacao{
+
+display:flex;
+flex-direction:column;
+gap:12px;
+margin:15px 0;
+
+}
+
+.radio-personalizacao{
+
+background:#151515;
+
+padding:15px;
+
+border-radius:12px;
+
+border:1px solid #35e05f;
+
+cursor:pointer;
+
+}
+
+.radio-personalizacao:hover{
+
+background:#1d1d1d;
+
+}
+
+.radio-personalizacao strong{
+
+float:right;
+
+color:#35e05f;
+
+}
+
+#produtoPreco{
+
+margin-top:18px;
+
+font-size:20px;
+
+color:#35e05f;
+
+font-weight:bold;
+
+text-align:center;
+
+}
+
+
+

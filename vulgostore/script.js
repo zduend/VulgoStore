@@ -57,7 +57,42 @@ function fecharModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
+function alterarPersonalizacao(){
+
+    const opcao = document.querySelector(
+        'input[name="personalizacao"]:checked'
+    ).value;
+
+    const dados = document.getElementById("dadosPersonalizacao");
+
+    const preco = document.getElementById("produtoPreco");
+
+    if(opcao === "sim"){
+
+        dados.style.display = "block";
+
+        preco.innerHTML =
+            "<strong>Total: R$ 175,00</strong>";
+
+    }else{
+
+        dados.style.display = "none";
+
+        preco.innerHTML =
+            "<strong>Total: R$ 140,00</strong>";
+
+        document.getElementById("nomeCamisa").value = "";
+        document.getElementById("numeroCamisa").value = "";
+
+    }
+
+}
+
 function enviarPedido() {
+  const personalizacao =
+document.querySelector(
+'input[name="personalizacao"]:checked'
+).value; 
   const tamanho = document.getElementById('tamanho').value;
   const nomeCamisa = document.getElementById('nomeCamisa').value || 'Sem personalização';
   const numeroCamisa = document.getElementById('numeroCamisa').value || 'Sem número';
@@ -65,10 +100,8 @@ function enviarPedido() {
   const cliente = document.getElementById('cliente').value || 'Não informado';
 
   const fotoCamisa = produtoSelecionado.imagem_url;
-  const temPersonalizacao =
-  nomeCamisa !== 'Sem personalização' || numeroCamisa !== 'Sem número';
-
-const precoFinal = temPersonalizacao ? 180 : 140;
+  const precoFinal =
+personalizacao === "sim" ? 175 : 140;
 
 const preco = `R$ ${precoFinal},00`;
 
